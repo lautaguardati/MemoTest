@@ -30,11 +30,13 @@ function colocarBanderas() {
 }
 
 document.querySelector("#boton-empezar-juego").onclick = comenzarJuego;
+let empezarCronometro;
 function comenzarJuego() {
     barajar();
     esconderMenuPrincipal();
     mostrarPantallaDeJuego();
     activarAccionUsuario();
+    empezarCronometro = setInterval(agregarMS, 10)
 }
 
 function esconderMenuPrincipal() {
@@ -69,5 +71,30 @@ function rotarBandera(bandera, cuadro) {
         $cuadro.style.rotate = "y 0deg"
         $cuadro.src = bandera
     }, 225)
+}
+
+
+let centesimasDeSegundo = 0;
+let segundos = 0;
+let minutos = 0;
+
+function agregarMS() {
+    centesimasDeSegundo++;
+
+    if (centesimasDeSegundo === 100) {
+        centesimasDeSegundo = 0;
+        segundos++;
+    }
+    if (segundos === 60) {
+        segundos = 0;
+        minutos++;
+    }
+    mostrarCronometro();
+}
+
+function mostrarCronometro(){
+    document.querySelector("#minutos").textContent = minutos;
+    document.querySelector("#segundos").textContent = segundos;
+    document.querySelector("#centesimas").textContent = centesimasDeSegundo;
 }
 
