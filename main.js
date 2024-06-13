@@ -140,6 +140,28 @@ function mostrarIntentos(){
     document.querySelector("#intentos").textContent = intentos
 }
 
+function ganar() {
+    mostrarMenuPrincipal();
+    esconderPantallaDeJuego();
+    mostrarResultados();
+}
+
+function mostrarMenuPrincipal() {
+    document.querySelector("#menu-principal").removeAttribute("hidden")
+}
+
+function esconderPantallaDeJuego() {
+    document.querySelector("#pantalla-de-juego").setAttribute("hidden", "")
+}
+
+function mostrarResultados() {
+    document.querySelector("#intentos-finales").textContent = intentos;
+    document.querySelector("#minutos-totales").textContent = minutos;
+    document.querySelector("#segundos-totales").textContent = segundos;
+    document.querySelector("#centesimas-totales").textContent = centesimasDeSegundo;
+
+    document.querySelector("#resultados").removeAttribute("hidden")
+}
 
 let centesimasDeSegundo = 0;
 let segundos = 0;
