@@ -80,7 +80,9 @@ function manejarTurnoUsuario(e) {
             aciertos++;
             desactivarBanderasCorrectas(cuadrosSeleccionados);
             if (aciertos === 8) {
-                ganar();
+                setTimeout(()=>{
+                    ganar()
+                }, 500)
             }
         } else {
             cuadrosSeleccionados.forEach((cuadro) => {
