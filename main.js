@@ -28,3 +28,14 @@ function colocarBanderas() {
     })
 }
 
+
+function rotarBandera(bandera, cuadro) {
+    const $cuadro = document.querySelector("#" + cuadro)
+    $cuadro.style.rotate = "y 180deg"
+    $cuadro.style.transition = "0.5s linear"
+    setTimeout(() => {
+        $cuadro.style.rotate = "y 0deg"
+        $cuadro.src = bandera
+    }, 225)
+}
+
