@@ -198,17 +198,21 @@ function detenerCronometro() {
 
 function reiniciarResultados() {
     ponerBanderasBocaAbajo();
+
+    detenerCronometro();
+    reiniciarCronometro();
+    desactivarAccionUsuarioPermanente()
+    reiniciarVariablesDeJuego();
+}
+
+function reiniciarVariablesDeJuego(){
     numeroDeClicks = 0;
     banderasSeleccionadas = [];
     cuadrosSeleccionados = [];
     aciertos = 0;
     intentos = 0;
-    detenerCronometro();
-    reiniciarCronometro();
-    desactivarAccionUsuarioPermanente();
+    document.querySelector("#intentos").textContent = "0"
 }
-
-
 
 function ponerBanderasBocaAbajo() {
     i = 1;
