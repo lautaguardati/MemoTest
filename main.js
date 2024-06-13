@@ -56,6 +56,7 @@ function activarAccionUsuario() {
 
 function manejarTurnoUsuario(e) {
 
+    desactivarAccionUsuario()
 
     numeroDeClicks++;
     const banderaSeleccionada = e.target.name
@@ -71,6 +72,16 @@ function rotarBandera(bandera, cuadro) {
         $cuadro.style.rotate = "y 0deg"
         $cuadro.src = bandera
     }, 225)
+}
+
+//Desactiva la accion del usuario temporalmente
+function desactivarAccionUsuario() {
+    document.querySelectorAll(".col").forEach(($cuadro) => {
+        $cuadro.onclick = {};
+    })
+    setTimeout(() => {
+        activarAccionUsuario()
+    }, 500)
 }
 
 
