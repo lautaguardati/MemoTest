@@ -1,0 +1,12 @@
+.img-thumbnail {
+    width: 280px;
+    height: 157px;
+}
+
+body {
+    background-color: rgb(165, 138, 98);
+}
+
+#menu-principal{
+    background-color: lightblue;
+}
