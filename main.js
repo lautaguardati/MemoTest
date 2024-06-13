@@ -54,6 +54,12 @@ function activarAccionUsuario() {
     })
 }
 
+let numeroDeClicks = 0;
+let banderasSeleccionadas = []
+let cuadrosSeleccionados = []
+let aciertos = 0;
+let intentos = 0;
+
 function manejarTurnoUsuario(e) {
 
     desactivarAccionUsuario()
@@ -62,6 +68,34 @@ function manejarTurnoUsuario(e) {
     const banderaSeleccionada = e.target.name
     const cuadroSeleccionado = e.target.id
 
+    banderasSeleccionadas.push(banderaSeleccionada)
+    cuadrosSeleccionados.push(cuadroSeleccionado)
+
+    rotarBandera(banderaSeleccionada, cuadroSeleccionado)
+
+    //para que no se pueda acertar apretando en la misma bandera dos veces
+    desactivarBanderasEnJuego(cuadrosSeleccionados)
+
+    mostrarIntentos();
+
+    if (numeroDeClicks % 2 === 0) {
+        intentos++;
+        if (banderasSeleccionadas[0] === banderasSeleccionadas[1]) {
+            aciertos++;
+            desactivarBanderasCorrectas(cuadrosSeleccionados);
+            if (aciertos === 8) {
+                ganar();
+            }
+        } else {
+            cuadrosSeleccionados.forEach((cuadro) => {
+                setTimeout(() => {
+                    rotarBandera("img/back.jpg", cuadro)
+                }, 700)
+            })
+        }
+        cuadrosSeleccionados = []
+        banderasSeleccionadas = []
+    }
 }
 
 function rotarBandera(bandera, cuadro) {
@@ -82,6 +116,28 @@ function desactivarAccionUsuario() {
     setTimeout(() => {
         activarAccionUsuario()
     }, 500)
+}
+
+function desactivarBanderasCorrectas(cuadrosSeleccionados) {
+    cuadrosSeleccionados.forEach((cuadro) => {
+        document.querySelector("#col-" + cuadro).className = ""
+    })
+}
+
+function desactivarBanderasEnJuego(cuadrosSeleccionados) {
+    if (cuadrosSeleccionados.length <= 1) {
+        cuadrosSeleccionados.forEach((cuadro) => {
+            document.querySelector("#col-" + cuadro).className = ""
+        })
+    } else {
+        cuadrosSeleccionados.forEach((cuadro) => {
+            document.querySelector("#col-" + cuadro).className = "col"
+        })
+    }
+}
+
+function mostrarIntentos(){
+    document.querySelector("#intentos").textContent = intentos
 }
 
 
