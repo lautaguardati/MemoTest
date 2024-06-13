@@ -9,6 +9,7 @@ banderas.forEach((bandera) => {
 
 //Aplicamos el barajado de Fisher-Yates
 function barajar(banderas) {
+function barajar() {
     let m = banderas.length, t, i;
     while (m) {
         i = Math.floor(Math.random() * m--)
@@ -28,6 +29,37 @@ function colocarBanderas() {
     })
 }
 
+document.querySelector("#boton-empezar-juego").onclick = comenzarJuego;
+function comenzarJuego() {
+    barajar();
+    esconderMenuPrincipal();
+    mostrarPantallaDeJuego();
+    activarAccionUsuario();
+}
+
+function esconderMenuPrincipal() {
+    document.querySelector("#menu-principal").setAttribute("hidden", "")
+}
+
+function mostrarPantallaDeJuego() {
+    document.querySelector("#pantalla-de-juego").removeAttribute("hidden")
+}
+
+
+function activarAccionUsuario() {
+    document.querySelectorAll(".col").forEach(($cuadro) => {
+        $cuadro.onclick = manejarTurnoUsuario;
+    })
+}
+
+function manejarTurnoUsuario(e) {
+
+
+    numeroDeClicks++;
+    const banderaSeleccionada = e.target.name
+    const cuadroSeleccionado = e.target.id
+
+}
 
 function rotarBandera(bandera, cuadro) {
     const $cuadro = document.querySelector("#" + cuadro)
