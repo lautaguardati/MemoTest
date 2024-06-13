@@ -1,14 +1,10 @@
-
 let banderas = ["bandera-argentina", "bandera-bolivia", "bandera-brasil", "bandera-chile",
     "bandera-paraguay", "bandera-peru", "bandera-uruguay", "bandera-venezuela"]
-
 banderas.forEach((bandera) => {
     banderas.push(bandera)
 })
 
-
 //Aplicamos el barajado de Fisher-Yates
-function barajar(banderas) {
 function barajar() {
     let m = banderas.length, t, i;
     while (m) {
@@ -144,6 +140,7 @@ function ganar() {
     mostrarMenuPrincipal();
     esconderPantallaDeJuego();
     mostrarResultados();
+    reiniciarResultados();
 }
 
 function mostrarMenuPrincipal() {
@@ -187,3 +184,42 @@ function mostrarCronometro(){
     document.querySelector("#centesimas").textContent = centesimasDeSegundo;
 }
 
+function reiniciarCronometro() {
+    centesimasDeSegundo = 0;
+    segundos = 0;
+    minutos = 0;
+}
+
+function detenerCronometro() {
+    clearInterval(empezarCronometro)
+}
+
+function reiniciarResultados() {
+    ponerBanderasBocaAbajo();
+    numeroDeClicks = 0;
+    banderasSeleccionadas = [];
+    cuadrosSeleccionados = [];
+    aciertos = 0;
+    intentos = 0;
+    detenerCronometro();
+    reiniciarCronometro();
+    desactivarAccionUsuarioPermanente();
+}
+
+
+
+function ponerBanderasBocaAbajo() {
+    i = 1;
+    banderas.forEach(() => {
+        let cuadro = "cuadro-" + i;
+        document.querySelector("#col-cuadro-" + i).className = "col"
+        rotarBandera("img/back.jpg", cuadro)
+        i++
+    })
+}
+
+function desactivarAccionUsuarioPermanente(){
+    document.querySelectorAll(".col").forEach(($cuadro)=>{
+        $cuadro.onclick = {}
+    })
+}
