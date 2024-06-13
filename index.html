@@ -10,18 +10,42 @@
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
 </head>
 
-<h1 class="display-1">
-    <div class="text-center">
-        MemoTest
-    </div>
-</h1>
-
 <body>
-    <div id="pantalla-de-juego" class="container text-center">
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
-            <div class="col">
-                <img id="cuadro-1" src="img/back.jpg" class="img-thumbnail">
+    <div id="menu-principal" class="container text-center" style="border-radius: 200px;">
+        <h1 id="titulo" class="display-1">
+            MemoTest
+        </h1>
+        <div class="h2">
+            Juego de memoria con banderas
+        </div>
+        <div class="row-inline">
+            <img src="img/bandera-argentina.jpg" class="img-thumbnail">
+            <img src="img/bandera-bolivia.jpg" class="img-thumbnail">
+            <img src="img/bandera-brasil.jpg" class="img-thumbnail">
+            <img src="img/bandera-chile.jpg" class="img-thumbnail">
+            <img src="img/bandera-paraguay.jpg" class="img-thumbnail">
+            <img src="img/bandera-peru.jpg" class="img-thumbnail">
+            <img src="img/bandera-uruguay.jpg" class="img-thumbnail">
+            <img src="img/bandera-venezuela.jpg" class="img-thumbnail">
+        </div>
+        <div id="resultados" class="h1" style="padding-top:50px" hidden>
+            <div class="row">
+                <div class="col-4">
+                    ¡Bien hecho! ¡Has ganado!
+                </div>
+                <div class="col-4">
+                    Intentos: <span id="intentos-finales"></span>
+                </div>
+                <div class="col-4">
+                    Tiempo final: <span id="minutos-totales"></span>:<span id="segundos-totales"></span>:<span
+                        id="centesimas-totales"></span>
+                </div>
             </div>
+        </div>
+        <div class="d-grid gap-2 col-6 mx-auto" style="padding: 50px;">
+            <button type="button" id="boton-empezar-juego" class="btn btn-primary btn-lg">Comenzar juego nuevo</button>
+        </div>
+    </div>
 
             <div class="col">
                 <img id="cuadro-2" src="img/back.jpg" class="img-thumbnail">
