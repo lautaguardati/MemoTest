@@ -32,7 +32,7 @@ function comenzarJuego() {
     esconderMenuPrincipal();
     mostrarPantallaDeJuego();
     activarAccionUsuario();
-    empezarCronometro = setInterval(agregarMS, 10)
+    //    empezarCronometro = setInterval(agregarMS, 10)
 }
 
 function esconderMenuPrincipal() {
@@ -45,8 +45,13 @@ function mostrarPantallaDeJuego() {
 
 
 function activarAccionUsuario() {
-    document.querySelectorAll(".col").forEach(($cuadro) => {
-        $cuadro.onclick = manejarTurnoUsuario;
+    const $pantallaDeJuego = document.querySelector("#pantalla-de-juego")
+    $pantallaDeJuego.querySelectorAll("img").forEach(($cuadro) => {
+        $cuadro.onclick = (e) => {
+            if ($cuadro.src === "file:///C:/Users/lauta/OneDrive/Documentos/GitHub/MemoTest/img/back.jpg"){
+                manejarTurnoUsuario(e);
+            }
+        }
     })
 }
 
@@ -55,6 +60,10 @@ let banderasSeleccionadas = []
 let cuadrosSeleccionados = []
 let aciertos = 0;
 let intentos = 0;
+
+function manejarTurnoUsuario1() {
+    console.log("HOlA")
+}
 
 function manejarTurnoUsuario(e) {
 
@@ -70,17 +79,14 @@ function manejarTurnoUsuario(e) {
     rotarBandera(banderaSeleccionada, cuadroSeleccionado)
 
     //para que no se pueda acertar apretando en la misma bandera dos veces
-    desactivarBanderasEnJuego(cuadrosSeleccionados)
-
-    mostrarIntentos();
+    manejarBanderasEnJuego(cuadrosSeleccionados)
 
     if (numeroDeClicks % 2 === 0) {
-        intentos++;
         if (banderasSeleccionadas[0] === banderasSeleccionadas[1]) {
             aciertos++;
             desactivarBanderasCorrectas(cuadrosSeleccionados);
             if (aciertos === 8) {
-                setTimeout(()=>{
+                setTimeout(() => {
                     ganar()
                 }, 500)
             }
@@ -93,7 +99,10 @@ function manejarTurnoUsuario(e) {
         }
         cuadrosSeleccionados = []
         banderasSeleccionadas = []
+    } else {
+        intentos++;
     }
+    actualizarIntentos();
 }
 
 function rotarBandera(bandera, cuadro) {
@@ -122,7 +131,7 @@ function desactivarBanderasCorrectas(cuadrosSeleccionados) {
     })
 }
 
-function desactivarBanderasEnJuego(cuadrosSeleccionados) {
+function manejarBanderasEnJuego(cuadrosSeleccionados) {
     if (cuadrosSeleccionados.length <= 1) {
         cuadrosSeleccionados.forEach((cuadro) => {
             document.querySelector("#col-" + cuadro).className = ""
@@ -134,7 +143,7 @@ function desactivarBanderasEnJuego(cuadrosSeleccionados) {
     }
 }
 
-function mostrarIntentos(){
+function actualizarIntentos() {
     document.querySelector("#intentos").textContent = intentos
 }
 
@@ -180,7 +189,7 @@ function agregarMS() {
     mostrarCronometro();
 }
 
-function mostrarCronometro(){
+function mostrarCronometro() {
     document.querySelector("#minutos").textContent = minutos;
     document.querySelector("#segundos").textContent = segundos;
     document.querySelector("#centesimas").textContent = centesimasDeSegundo;
@@ -205,7 +214,7 @@ function reiniciarResultados() {
     reiniciarVariablesDeJuego();
 }
 
-function reiniciarVariablesDeJuego(){
+function reiniciarVariablesDeJuego() {
     numeroDeClicks = 0;
     banderasSeleccionadas = [];
     cuadrosSeleccionados = [];
@@ -224,8 +233,8 @@ function ponerBanderasBocaAbajo() {
     })
 }
 
-function desactivarAccionUsuarioPermanente(){
-    document.querySelectorAll(".col").forEach(($cuadro)=>{
+function desactivarAccionUsuarioPermanente() {
+    document.querySelectorAll(".col").forEach(($cuadro) => {
         $cuadro.onclick = {}
     })
 }
