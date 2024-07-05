@@ -32,7 +32,7 @@ function comenzarJuego() {
     esconderMenuPrincipal();
     mostrarPantallaDeJuego();
     activarAccionUsuario();
-//    empezarCronometro = setInterval(agregarMS, 10)
+    empezarCronometro = setInterval(agregarMS, 10)
 }
 
 function esconderMenuPrincipal() {
