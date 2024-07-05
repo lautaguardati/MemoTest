@@ -78,9 +78,6 @@ function manejarTurnoUsuario(e) {
 
     rotarBandera(banderaSeleccionada, cuadroSeleccionado)
 
-    //para que no se pueda acertar apretando en la misma bandera dos veces
-    manejarBanderasEnJuego(cuadrosSeleccionados)
-
     if (numeroDeClicks % 2 === 0) {
         if (banderasSeleccionadas[0] === banderasSeleccionadas[1]) {
             aciertos++;
@@ -130,19 +127,6 @@ function desactivarBanderasCorrectas(cuadrosSeleccionados) {
         document.querySelector("#col-" + cuadro).className = ""
     })
 }
-
-function manejarBanderasEnJuego(cuadrosSeleccionados) {
-    if (cuadrosSeleccionados.length <= 1) {
-        cuadrosSeleccionados.forEach((cuadro) => {
-            document.querySelector("#col-" + cuadro).className = ""
-        })
-    } else {
-        cuadrosSeleccionados.forEach((cuadro) => {
-            document.querySelector("#col-" + cuadro).className = "col"
-        })
-    }
-}
-
 function actualizarIntentos() {
     document.querySelector("#intentos").textContent = intentos
 }
