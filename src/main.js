@@ -81,7 +81,6 @@ function manejarTurnoUsuario(e) {
     if (numeroDeClicks % 2 === 0) {
         if (banderasSeleccionadas[0] === banderasSeleccionadas[1]) {
             aciertos++;
-            desactivarBanderasCorrectas(cuadrosSeleccionados);
             if (aciertos === 8) {
                 setTimeout(() => {
                     ganar()
@@ -122,11 +121,6 @@ function desactivarAccionUsuario() {
     }, 500)
 }
 
-function desactivarBanderasCorrectas(cuadrosSeleccionados) {
-    cuadrosSeleccionados.forEach((cuadro) => {
-        document.querySelector("#col-" + cuadro).className = ""
-    })
-}
 function actualizarIntentos() {
     document.querySelector("#intentos").textContent = intentos
 }
