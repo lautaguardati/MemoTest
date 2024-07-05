@@ -32,7 +32,7 @@ function comenzarJuego() {
     esconderMenuPrincipal();
     mostrarPantallaDeJuego();
     activarAccionUsuario();
-    //    empezarCronometro = setInterval(agregarMS, 10)
+    empezarCronometro = setInterval(agregarMS, 10)
 }
 
 function esconderMenuPrincipal() {
@@ -60,10 +60,6 @@ let banderasSeleccionadas = []
 let cuadrosSeleccionados = []
 let aciertos = 0;
 let intentos = 0;
-
-function manejarTurnoUsuario1() {
-    console.log("HOlA")
-}
 
 function manejarTurnoUsuario(e) {
 
@@ -113,7 +109,7 @@ function rotarBandera(bandera, cuadro) {
 
 //Desactiva la accion del usuario temporalmente
 function desactivarAccionUsuario() {
-    document.querySelectorAll(".col").forEach(($cuadro) => {
+    document.querySelectorAll("img").forEach(($cuadro) => {
         $cuadro.onclick = {};
     })
     setTimeout(() => {
@@ -185,10 +181,8 @@ function detenerCronometro() {
 
 function reiniciarResultados() {
     ponerBanderasBocaAbajo();
-
     detenerCronometro();
     reiniciarCronometro();
-    desactivarAccionUsuarioPermanente()
     reiniciarVariablesDeJuego();
 }
 
@@ -204,15 +198,8 @@ function reiniciarVariablesDeJuego() {
 function ponerBanderasBocaAbajo() {
     i = 1;
     banderas.forEach(() => {
-        let cuadro = "cuadro-" + i;
-        document.querySelector("#col-cuadro-" + i).className = "col"
+        const cuadro = "cuadro-" + i;
         rotarBandera("img/back.jpg", cuadro)
         i++
-    })
-}
-
-function desactivarAccionUsuarioPermanente() {
-    document.querySelectorAll(".col").forEach(($cuadro) => {
-        $cuadro.onclick = {}
     })
 }
