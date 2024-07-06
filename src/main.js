@@ -32,7 +32,7 @@ function comenzarJuego() {
     esconderMenuPrincipal();
     mostrarPantallaDeJuego();
     activarAccionUsuario();
-    empezarCronometro = setInterval(agregarMS, 10)
+    empezarCronometro = setInterval(aumentarTiempo, 10)
 }
 
 function esconderMenuPrincipal() {
@@ -149,7 +149,7 @@ let centesimasDeSegundo = 0;
 let segundos = 0;
 let minutos = 0;
 
-function agregarMS() {
+function aumentarTiempo() {
     centesimasDeSegundo++;
 
     if (centesimasDeSegundo === 100) {
