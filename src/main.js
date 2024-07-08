@@ -48,7 +48,7 @@ function activarAccionUsuario() {
     const $pantallaDeJuego = document.querySelector("#pantalla-de-juego")
     $pantallaDeJuego.querySelectorAll("img").forEach(($cuadro) => {
         $cuadro.onclick = (e) => {
-            if ($cuadro.src === "file:///C:/Users/lauta/OneDrive/Documentos/GitHub/MemoTest/img/back.jpg"){
+            if (/back.jpg/.test($cuadro.src)){
                 manejarTurnoUsuario(e);
             }
         }
