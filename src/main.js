@@ -48,7 +48,9 @@ function activarAccionUsuario() {
     const $pantallaDeJuego = document.querySelector("#pantalla-de-juego")
     $pantallaDeJuego.querySelectorAll("img").forEach(($cuadro) => {
         $cuadro.onclick = (e) => {
-            if (/back.jpg/.test($cuadro.src)){
+            //Permite que solo se seleccionen las banderas que se encuentran boca abajo. Consecuentemente 
+            //evita que el usuario pueda acertar al clickear dos veces la misma bandera.
+            if (/back.jpg/.test($cuadro.src)) {
                 manejarTurnoUsuario(e);
             }
         }
@@ -93,8 +95,8 @@ function manejarTurnoUsuario(e) {
         banderasSeleccionadas = []
     } else {
         intentos++;
+        actualizarIntentos();
     }
-    actualizarIntentos();
 }
 
 function rotarBandera(bandera, cuadro) {
@@ -114,7 +116,7 @@ function desactivarAccionUsuario() {
     })
     setTimeout(() => {
         activarAccionUsuario()
-    }, 500)
+    }, 700)
 }
 
 function actualizarIntentos() {
