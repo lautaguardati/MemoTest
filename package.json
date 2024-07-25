@@ -1,15 +1,29 @@
 {
   "dependencies": {
-    "bootstrap": "^5.3.3"
+    "bootstrap": "^5.3.3",
+    "http-server": "^14.1.1"
   },
   "name": "memotest",
   "version": "1.0.0",
   "description": "Juego de memoria MemoTest",
   "main": "index.html",
-  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "http-server": "http-server -c-1",
+    "cy:open": "cypress open",
+    "cypress-run": "cypress run"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lautaguardati/MemoTest.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lautaguardati/MemoTest/issues"
+  },
+  "homepage": "https://github.com/lautaguardati/MemoTest#readme",
+  "devDependencies": {
+    "cypress": "^13.13.0"
+  }
 }
